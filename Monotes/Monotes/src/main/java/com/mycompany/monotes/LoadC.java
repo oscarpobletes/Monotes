@@ -192,12 +192,15 @@ public class LoadC extends javax.swing.JFrame {
               grade=avg/(percent/100);// grade at the moment
               pending=100-percent; //percentage of pending evaluations
               //there is a difference in the order of calculation when the student does not have pending evaluations
-              if(pending==0){ 
-              needed=(10-avg)/(topass/10);//grade needed to pass the course (With parentheses in numerator)
-              }else{
-              needed=10-avg/(topass/10);//grade needed to pass the course (Without parentheses in numerator)
-              }
-              
+            if(avg>=topass){
+            needed=0; //course passed
+            }else{
+                if(pending==0){ 
+                      needed=(10-avg)/(topass/10);//grade needed to pass the course (With parentheses in numerator)
+                }else{
+                      needed=10-avg/(topass/10);//grade needed to pass the course (Without parentheses in numerator)
+                }
+            }    
               System.out.println("\nGrade:"+grade);
               System.out.println("Pending:"+pending);
               System.out.println("Average:"+avg);
